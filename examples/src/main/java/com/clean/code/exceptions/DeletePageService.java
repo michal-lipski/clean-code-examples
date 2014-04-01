@@ -31,38 +31,38 @@ public class DeletePageService {
     }
 
 
-
-
-
-
-
-
-
-
-
     class Page {
-
-
     }
 
     class Registry {
 
-
         public int deleteReference(Page page) {
-            return 0;
+            if (page != null) {
+                return E_OK;
+            } else {
+                return E_ERROR;
+            }
         }
     }
 
     class Config {
 
-
         public int deleteKey(Page page) {
-            return 0;
+            if (page != null) {
+                return E_OK;
+            } else {
+                return E_ERROR;
+            }
         }
     }
 
     int deletePage(Page page) {
-        return 0;
+        if (page != null) {
+            return E_OK;
+        } else {
+            return E_ERROR;
+        }
+
     }
 
 
