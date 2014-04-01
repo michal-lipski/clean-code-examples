@@ -6,13 +6,14 @@ import java.util.logging.Logger;
 
 public class DeletePageServiceImproved {
 
+    private Repository repository;
     private Registry registry;
     private Config config;
     private Logger logger;
 
     void deletePageWithConfigAndReference(Page page) {
         try {
-            deletePage(page);
+            repository.deletePage(page);
             registry.deleteReference(page);
             config.deleteKey(page);
         } catch (Exception e) {
@@ -54,7 +55,9 @@ public class DeletePageServiceImproved {
         }
     }
 
-    int deletePage(Page page) {
-        return 0;
+    private class Repository {
+        public int deletePage(Page page) {
+            return 0;
+        }
     }
 }

@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 public class DeletePageServiceSeparated {
 
+    private Repository repository;
     private Registry registry;
     private Config config;
     private Logger logger;
@@ -20,7 +21,7 @@ public class DeletePageServiceSeparated {
     }
 
     private void deletePageAndAllReferences(Page page) throws Exception {
-        deletePage(page);
+        repository.deletePage(page);
         registry.deleteReference(page);
         config.deleteKey(page);
     }
@@ -68,7 +69,9 @@ public class DeletePageServiceSeparated {
         }
     }
 
-    int deletePage(Page page) {
-        return 0;
+    private class Repository {
+        public int deletePage(Page page) {
+            return 0;
+        }
     }
 }
