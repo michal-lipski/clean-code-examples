@@ -20,7 +20,10 @@ class Customer {
         sum.add("Rental Record for " + name + "\n");
         String d = "";
         for (Rental rental : rentals.rentalList) {
-            d += rental.getMovieTitle() + " " + rental.movie.price.getCharge(rental.daysRented) + "\n";
+            double result = 1.5;
+            if (rental.daysRented > 3)
+                result += (rental.daysRented - 3) * 1.5;
+            d += rental.getMovieTitle() + " " + result + "\n";
         }
         sum.add(d);
         double totalCharge = 0;
