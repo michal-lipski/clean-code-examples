@@ -20,7 +20,7 @@ public class BadNamedAppTest {
                 {3, 7},
                 {SELECTED, 8}};
 
-        List<int[]> flagged = new Game().getThem(board);
+        List<int[]> flagged = new Game().getFlaggedFields(board);
 
         Assertions.assertThat(flagged).containsExactly(new int[]{4, 8});
 

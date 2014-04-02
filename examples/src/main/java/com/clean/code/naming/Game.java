@@ -6,13 +6,20 @@ import java.util.List;
 
 public class Game {
 
-    public List<int[]> getThem(int[][] theList) {
-        List<int[]> list1 = new ArrayList<int[]>();
-        // gets flagged field from game board
-        for (int[] x : theList)
-            if (x[0] == 4)
-                list1.add(x);
-        return list1;
+    public static final int FLAGGED = 4;
+    public static final int STATUS_VALUE = 0;
+
+    public List<int[]> getFlaggedFields(int[][] gameBoard) {
+        List<int[]> flaggedFields = new ArrayList<int[]>();
+        for (int[] fields : gameBoard)
+            if (isFlagged(fields)) {
+                flaggedFields.add(fields);
+            }
+        return flaggedFields;
+    }
+
+    private boolean isFlagged(int[] fields) {
+        return fields[STATUS_VALUE] == FLAGGED;
     }
 
 

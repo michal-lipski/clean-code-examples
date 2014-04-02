@@ -10,4 +10,8 @@ class Rental {
     }
 
 
+    double rentalCharge() {
+        return movie.movieCharge(daysRented);
+    }
+
 }

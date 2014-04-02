@@ -14,12 +14,26 @@ public class BooleanArguments {
         public boolean isSupperUser() {
             return supperUser;
         }
+
+        public void setSupperUser() {
+            supperUser = true;
+        }
+
+        public void setNormalUser() {
+            supperUser = false;
+        }
+
+        public boolean isNotSupperUser() {
+            return !supperUser;
+        }
     }
 
     public void createNormalUser() {
         User user = new User();
 
         user.setSupperUser(false);
+        user.setSupperUser();
+        user.setNormalUser();
     }
 
     public void executeWithSuperUser() {
@@ -33,7 +47,7 @@ public class BooleanArguments {
     public void executeWithNormalUser() {
         User user = new User();
 
-        if (!user.isSupperUser()) {
+        if (user.isNotSupperUser()) {
             //execute some normal stuff
         }
     }

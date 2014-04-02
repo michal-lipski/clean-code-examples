@@ -13,8 +13,6 @@ public class Movie {
         this.priceCode = priceCode;
     }
 
-//not closed for modification
-//not open for extension
     public double getCharge(int daysRented) {
         if (priceCode == REGULAR) {
             double result = 2;
@@ -23,6 +21,9 @@ public class Movie {
             return result;
         } else if (priceCode == NEW_RELEASE) {
             return daysRented * 3;
+
+        } else if (priceCode == CHILDREN) {
+            return daysRented * 2;
         } else {
             throw new IllegalArgumentException("Incorrect Price Code");
         }

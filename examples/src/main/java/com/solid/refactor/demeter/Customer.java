@@ -14,13 +14,7 @@ class Customer {
     }
 
     public double getTotalCharge() {
-        double totalCharge = 0;
-
-        for (Rental rental : rentals.rentalList) {
-            totalCharge += rental.movie.price.getCharge(rental.daysRented);
-        }
-
-        return totalCharge;
+        return rentals.getRentalsCharge();
     }
 
 }

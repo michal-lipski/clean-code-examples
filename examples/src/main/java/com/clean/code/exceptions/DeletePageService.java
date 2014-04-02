@@ -15,20 +15,27 @@ public class DeletePageService {
     private Logger logger;
 
     void deletePageWithConfigAndReference(Page page) {
-        if (repository.deletePage(page) == E_OK) {
-            if (registry.deleteReference(page) == E_OK) {
-                if (config.deleteKey(page) == E_OK) {
-                    logger.log(Level.INFO, "page deleted");
-                } else {
-                    logger.log(Level.INFO, "configKey not deleted");
-                }
-            } else {
-                logger.log(Level.INFO, "deleteReference from registry failed");
-            }
-        } else {
-            logger.log(Level.WARNING, "delete failed");
+        try {
+            delete(page);
+            logSuccess();
+        } catch (PageEmptyException exception) {
+            logError(exception);
         }
 
+    }
+
+    private void delete(Page page) {
+        repository.deletePage(page);
+        registry.deleteReference(page);
+        config.deleteKey(page);
+    }
+
+    private void logError(Exception e) {
+        logger.log(Level.WARNING, e.getMessage());
+    }
+
+    private void logSuccess() {
+        logger.log(Level.INFO, "page deleted");
     }
 
 
@@ -68,12 +75,17 @@ public class DeletePageService {
 
 
     private class Repository {
-        public int deletePage(Page page) {
-            if (page != null) {
-                return E_OK;
-            } else {
-                return E_ERROR;
+        public void deletePage(Page page) {
+            if (page == null) {
+                throw new PageEmptyException("page is null");
             }
+            //rest of stuff
+        }
+    }
+
+    private class PageEmptyException extends RuntimeException {
+        public PageEmptyException(String messgae) {
+            super(messgae);
         }
     }
 }

@@ -6,18 +6,20 @@ public class AbstractionLevel {
     public String rentalsSummary(String name, Double totalCharge) {
         SummaryReport summary = new SummaryReport();
 
-        summary.add("Rental Record for " + name + "\n");
+        summary.add(reportHeader(name));
         summary.add(reportBody());
-        summary.add("Amount owed is " + totalCharge + "\n");
+        summary.add(reportFooter(totalCharge));
 
         return summary.asString();
     }
 
+    private String reportFooter(Double totalCharge) {
+        return "Amount owed is " + totalCharge + "\n";
+    }
 
-
-
-
-
+    private String reportHeader(String name) {
+        return "Rental Record for " + name + "\n";
+    }
 
 
     private String reportBody() {

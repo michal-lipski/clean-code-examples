@@ -19,4 +19,13 @@ public class Rentals implements Iterable<Rental> {
         return rentalList.iterator();
     }
 
+    double getRentalsCharge() {
+        double totalCharge = 0;
+
+        for (Rental rental : rentalList) {
+            totalCharge += rental.rentalCharge();
+        }
+        return totalCharge;
+    }
+
 }
