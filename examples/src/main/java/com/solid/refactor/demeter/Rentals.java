@@ -14,7 +14,6 @@ public class Rentals implements Iterable<Rental> {
         rentalList.add(rental);
     }
 
-    @Override
     public Iterator<Rental> iterator() {
         return rentalList.iterator();
     }

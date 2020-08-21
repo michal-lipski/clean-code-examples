@@ -1,4 +1,4 @@
-package com.clean.code.srs;
+package com.clean.code.naming;
 
 import java.util.ArrayList;
 import java.util.List;
